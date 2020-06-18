@@ -1,9 +1,9 @@
 FROM ubuntu:latest
-LABEL maintainer "gbamboo415<kawa.jnra415@gmail.com>"
+LABEL maintainer "wheat311<kawa.jnra415@gmail.com>"
 
 # ja-locale setup
 RUN apt-get update && \
-    apt-get install -y wget perl-modules
+    apt-get -y install wget perl-modules
 ENV TERM xterm-256color
 
 # install texlive
@@ -15,7 +15,10 @@ RUN wget http://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.ta
     rm -rf install-tl-* texlive.profile && \
 	/usr/local/texlive/????/bin/*/tlmgr path add && \
     tlmgr install latexmk && \
-    tlmgr path add
+    tlmgr path add && \
+    apt-get -y remove wget && \
+    apt-get -y autoremove && \
+    apt-get -y clean
 
 # normal user setup
 ENV USER latexer

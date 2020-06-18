@@ -12,10 +12,12 @@
 	- 日本語処理環境
 
 ## Usage
-    $ git clone git@github.com:gbamboo415/Docker-latex-ja-minimum.git
+### Docker Hubから
+    $ docker pull aotake91/latex-ja-minimum:latest
+	$ docker run -it --rm -v $(pwd):/home/latexer latex-ja-minimum /bin/bash
+### Dockerfileからのビルド
+    $ git clone git@github.com:wheat311/Docker-latex-ja-minimum.git
 	$ cd Docker-latex-ja-minimum
-	$ docker build -t latex-ja-minimum:1.0 . 
-	$ docker run -it --name latextest -v ${Your local directory}:/home/latexer latex-ja-minimum:1.0 /bin/bash
+	$ docker build -t latex-ja-minimum:latest . 
+	$ docker run -it --rm -v $(pwd):/home/latexer latex-ja-minimum /bin/bash
 
-## Future work
-- LaTeX標準添付のIPA exフォント以外のフォントを利用可能にする方法の調査と実装
